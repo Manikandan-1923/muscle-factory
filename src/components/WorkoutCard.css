@@ -1,0 +1,11 @@
+.card {
+  background: #1e1e1e;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.card h2 {
+  color: orange;
+}

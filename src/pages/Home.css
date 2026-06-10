@@ -1,0 +1,17 @@
+.home {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 60px;
+}
+
+.home h1 {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.home p {
+  font-size: 28px;
+  max-width: 700px;
+}
