@@ -1,0 +1,15 @@
+.search {
+  width: 300px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin: 20px 30px;
+  font-size: 18px;
+}
+
+.workouts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

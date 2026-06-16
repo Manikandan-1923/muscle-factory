@@ -8,7 +8,9 @@ function Navbar() {
       <Link to="/">Home</Link> |{" "}
       <Link to="/workouts">Workouts</Link> |{" "}
       <Link to="/diet">Diet</Link> |{" "}
-      <Link to="/profile">Profile</Link>
+      <Link to="/bmi">BMI</Link> |{" "}
+      <Link to="/profile">Profile</Link> |{" "}
+      <Link to="/login">Login</Link>
    </div>
     </nav>
   );

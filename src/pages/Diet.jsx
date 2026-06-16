@@ -1,11 +1,18 @@
-// import React from 'react'
+import DietCard from "../components/DietCard";
+import diets from "../data/diets";
 
 function Diet() {
   return (
     <div>
-      <h1>Diet Page</h1>
+      {diets.map((diet) => (
+        <DietCard
+          key={diet.id}
+          name={diet.name}
+          calories={diet.calories}
+        />
+      ))}
     </div>
-  )
+  );
 }
 
 export default Diet;
