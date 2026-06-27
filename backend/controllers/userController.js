@@ -56,11 +56,22 @@ const loginUser = async (req, res) => {
       });
     }
 
-    res.status(200).json({
-      message: "Login Successful ✅",
-      user,
-    });
+   const token = jwt.sign(
+  { id: user._id },
+  process.env.JWT_SECRET,
+  { expiresIn: "7d" }
+);
 
+res.status(200).json({
+  message: "Login Successful ✅",
+  token,
+  user: {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    goal: user.goal,
+  },
+});
   } catch (error) {
     res.status(500).json({
       message: error.message,
