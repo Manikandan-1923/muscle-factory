@@ -1,4 +1,5 @@
 import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 function Profile() {
@@ -10,6 +11,16 @@ function Profile() {
   const [goal, setGoal] = useState("Muscle Gain");
   const [height, setHeight] = useState("170");
   const [weight, setWeight] = useState("70");
+  const navigate = useNavigate();
+
+
+  const handleLogout = () => {
+  localStorage.removeItem("token");
+
+  alert("Logged Out Successfully 👋");
+
+  navigate("/login");
+};
 
   return (
     <div className="profile-container">
@@ -105,6 +116,11 @@ function Profile() {
   <button onClick={() => setIsEditing(!isEditing)}>
     {isEditing ? "Save Changes" : "Edit Profile"}
   </button>
+  <br /><br />
+
+<button onClick={handleLogout}>
+  Logout 
+</button>
 
 </div>
 

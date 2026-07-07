@@ -6,6 +6,7 @@ import Diet from "./pages/Diet";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import BMI from "./pages/BMI";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/workouts" element={<Workouts />} />
         <Route path="/diet" element={<Diet />} />
         <Route path="/bmi" element={<BMI />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
