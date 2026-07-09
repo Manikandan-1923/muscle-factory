@@ -23,6 +23,16 @@ const userSchema = new mongoose.Schema({
     default: "Muscle Gain",
   },
 
+  height: {
+  type: Number,
+  default: 170,
+},
+
+weight: {
+  type: Number,
+  default: 70,
+},
+
 });
 
 module.exports = mongoose.model("User", userSchema);

@@ -92,8 +92,39 @@ const getProfile = async (req, res) => {
   }
 };
 
+const updateProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.goal = req.body.goal || user.goal;
+    user.height = req.body.height || user.height;
+    user.weight = req.body.weight || user.weight;
+
+    const updatedUser = await user.save();
+
+    res.status(200).json({
+      message: "Profile Updated Successfully ✅",
+      user: updatedUser,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
   getProfile,
+  updateProfile,
 };

@@ -31,6 +31,8 @@ function Profile() {
       setName(res.data.name);
       setEmail(res.data.email);
       setGoal(res.data.goal);
+      setHeight(res.data.height);
+      setWeight(res.data.weight);
 
     } catch (error) {
       console.log(error);
@@ -44,6 +46,36 @@ function Profile() {
 
   fetchProfile();
 }, [navigate]);
+
+
+const handleSave = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    await axios.put(
+      "http://localhost:5000/api/users/profile",
+      {
+        name,
+        email,
+        goal,
+        height,
+        weight,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    alert("Profile Updated Successfully ✅");
+
+    setIsEditing(false);
+
+  } catch (error) {
+    alert(error.response?.data?.message || "Update Failed");
+  }
+};
 
 
   const handleLogout = () => {
@@ -145,9 +177,17 @@ function Profile() {
 
   <p><strong>BMI:</strong> 24.22</p>
 
-  <button onClick={() => setIsEditing(!isEditing)}>
-    {isEditing ? "Save Changes" : "Edit Profile"}
-  </button>
+ <button
+  onClick={() => {
+    if (isEditing) {
+      handleSave();
+    } else {
+      setIsEditing(true);
+    }
+  }}
+>
+  {isEditing ? "Save Changes" : "Edit Profile"}
+</button> 
   <br /><br />
 
 <button onClick={handleLogout}>
