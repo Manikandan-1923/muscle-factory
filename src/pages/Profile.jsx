@@ -14,6 +14,23 @@ function Profile() {
   const [weight, setWeight] = useState("70");
   const navigate = useNavigate();
 
+  const bmi = (
+  Number(weight) /
+  ((Number(height) / 100) * (Number(height) / 100))
+).toFixed(2);
+
+let bmiStatus = "";
+
+if (bmi < 18.5) {
+  bmiStatus = "Underweight";
+} else if (bmi < 25) {
+  bmiStatus = "Normal";
+} else if (bmi < 30) {
+  bmiStatus = "Overweight";
+} else {
+  bmiStatus = "Obese";
+}
+
   useEffect(() => {
   const fetchProfile = async () => {
     try {
@@ -175,8 +192,8 @@ const handleSave = async () => {
   )
 }
 
-  <p><strong>BMI:</strong> 24.22</p>
-
+  <p><strong>BMI:</strong> {bmi}</p>
+  <p><strong>Status:</strong> {bmiStatus}</p>
  <button
   onClick={() => {
     if (isEditing) {
