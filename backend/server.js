@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const workoutRoutes = require("./routes/workoutRoutes");
 const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
@@ -13,6 +14,7 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 app.use("/api/users", userRoutes);
+app.use("/api/workouts", workoutRoutes);
 
 app.get("/", (req, res) => {
   res.send("Muscle Factory Backend Running 🚀");
