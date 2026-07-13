@@ -8,7 +8,11 @@ function Workouts() {
   const [reps, setReps] = useState("");
   const [duration, setDuration] = useState("");
   const [workouts, setWorkouts] = useState([]);
-  
+  const [isEditing, setIsEditing] = useState(false);
+const [editingId, setEditingId] = useState(null);
+
+
+
 const fetchWorkouts = async () => {
   try {
     const token = localStorage.getItem("token");
@@ -52,6 +56,55 @@ const fetchWorkouts = async () => {
 
   } catch (error) {
     alert(error.response?.data?.message || "Delete Failed");
+  }
+};
+
+const handleEdit = (workout) => {
+  setExerciseName(workout.exerciseName);
+  setMuscleGroup(workout.muscleGroup);
+  setSets(workout.sets);
+  setReps(workout.reps);
+  setDuration(workout.duration);
+
+  setEditingId(workout._id);
+  setIsEditing(true);
+};
+
+const handleUpdateWorkout = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    await axios.put(
+      `http://localhost:5000/api/workouts/${editingId}`,
+      {
+        exerciseName,
+        muscleGroup,
+        sets,
+        reps,
+        duration,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    alert("Workout Updated Successfully ✅");
+
+    fetchWorkouts();
+
+    setExerciseName("");
+    setMuscleGroup("");
+    setSets("");
+    setReps("");
+    setDuration("");
+
+    setEditingId(null);
+    setIsEditing(false);
+
+  } catch (error) {
+    alert(error.response?.data?.message || "Update Failed");
   }
 };
 
@@ -139,9 +192,17 @@ const fetchWorkouts = async () => {
 
       <br /><br />
 
-      <button onClick={handleAddWorkout}>
-        Add Workout
-      </button>
+      <button
+  onClick={() => {
+    if (isEditing) {
+      handleUpdateWorkout();
+    } else {
+      handleAddWorkout();
+    }
+  }}
+>
+  {isEditing ? "Update Workout" : "Add Workout"}
+</button>
 
     <hr />
 
@@ -167,11 +228,19 @@ const fetchWorkouts = async () => {
 
     <p>⏱️ {workout.duration} mins</p>
 
-    <button
-  onClick={() => handleDelete(workout._id)}
->
-  Delete 🗑️
-</button>
+   
+<div style={{ marginTop: "10px" }}>
+  <button
+    onClick={() => handleEdit(workout)}
+    style={{ marginRight: "10px" }}
+  >
+    ✏️ Edit
+  </button>
+
+  <button onClick={() => handleDelete(workout._id)}>
+    🗑️ Delete
+  </button>
+</div>
   </div>
 ))}  
 
