@@ -1,5 +1,6 @@
 import { useState , useEffect} from "react";
 import axios from "axios";
+import "./Workouts.css";
 
 function Workouts() {
   const [exerciseName, setExerciseName] = useState("");
@@ -144,9 +145,9 @@ const handleUpdateWorkout = async () => {
   };
 
   return (
-    <div>
-      <h1>🏋️ Workouts</h1>
-
+    <div className="workout-container">
+      <h1 className="workout-title">🏋️ Workouts</h1>
+    <div className="workout-form">
       <input
         type="text"
         placeholder="Exercise Name"
@@ -154,8 +155,7 @@ const handleUpdateWorkout = async () => {
         onChange={(e) => setExerciseName(e.target.value)}
       />
 
-      <br /><br />
-
+  
       <input
         type="text"
         placeholder="Muscle Group"
@@ -163,7 +163,7 @@ const handleUpdateWorkout = async () => {
         onChange={(e) => setMuscleGroup(e.target.value)}
       />
 
-      <br /><br />
+      
 
       <input
         type="number"
@@ -172,7 +172,7 @@ const handleUpdateWorkout = async () => {
         onChange={(e) => setSets(e.target.value)}
       />
 
-      <br /><br />
+    
 
       <input
         type="number"
@@ -181,7 +181,7 @@ const handleUpdateWorkout = async () => {
         onChange={(e) => setReps(e.target.value)}
       />
 
-      <br /><br />
+      
 
       <input
         type="number"
@@ -190,7 +190,7 @@ const handleUpdateWorkout = async () => {
         onChange={(e) => setDuration(e.target.value)}
       />
 
-      <br /><br />
+      
 
       <button
   onClick={() => {
@@ -203,21 +203,16 @@ const handleUpdateWorkout = async () => {
 >
   {isEditing ? "Update Workout" : "Add Workout"}
 </button>
-
+    </div>
     <hr />
-
+<div className="workout-list">
 <h2>My Workouts</h2>
 
 {workouts.map((workout) => (
-  <div
-    key={workout._id}
-    style={{
-      border: "1px solid white",
-      padding: "10px",
-      margin: "10px 0",
-      borderRadius: "10px",
-    }}
-  >
+ <div
+  key={workout._id}
+  className="workout-card"
+>
     <h3>{workout.exerciseName}</h3>
 
     <p>💪 {workout.muscleGroup}</p>
@@ -229,21 +224,26 @@ const handleUpdateWorkout = async () => {
     <p>⏱️ {workout.duration} mins</p>
 
    
-<div style={{ marginTop: "10px" }}>
+<div className="card-buttons">
+
   <button
+    className="edit-btn"
     onClick={() => handleEdit(workout)}
-    style={{ marginRight: "10px" }}
   >
     ✏️ Edit
   </button>
 
-  <button onClick={() => handleDelete(workout._id)}>
+  <button
+    className="delete-btn"
+    onClick={() => handleDelete(workout._id)}
+  >
     🗑️ Delete
   </button>
 </div>
   </div>
+  
 ))}  
-
+</div>
 
     </div>
   );
