@@ -37,7 +37,7 @@ if (bmi < 18.5) {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/users/profile",
+        "https://muscle-factory-pccc.onrender.com/api/users/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -70,7 +70,7 @@ const handleSave = async () => {
     const token = localStorage.getItem("token");
 
     await axios.put(
-      "http://localhost:5000/api/users/profile",
+      "https://muscle-factory-pccc.onrender.com/api/users/profile",
       {
         name,
         email,

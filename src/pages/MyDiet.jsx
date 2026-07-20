@@ -19,7 +19,7 @@ function MyDiet() {
 
   const fetchMeals = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/diet", {
+      const res = await axios.get("https://muscle-factory-pccc.onrender.com/api/diet", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -38,7 +38,7 @@ function MyDiet() {
   const handleAddMeal = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/diet",
+        "https://muscle-factory-pccc.onrender.com/api/diet",
         {
           mealName,
           mealType,
@@ -84,7 +84,7 @@ function MyDiet() {
 const handleUpdateMeal = async () => {
   try {
     await axios.put(
-      `http://localhost:5000/api/diet/${editingId}`,
+      `https://muscle-factory-pccc.onrender.com/api/diet/${editingId}`,
       {
         mealName,
         mealType,
@@ -122,7 +122,7 @@ const handleUpdateMeal = async () => {
 const handleDelete = async (id) => {
   try {
     await axios.delete(
-      `http://localhost:5000/api/diet/${id}`,
+      `https://muscle-factory-pccc.onrender.com/api/diet/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

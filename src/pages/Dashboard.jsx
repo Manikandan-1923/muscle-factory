@@ -12,7 +12,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       const profileRes = await axios.get(
-        "http://localhost:5000/api/users/profile",
+        "https://muscle-factory-pccc.onrender.com/api/users/profile",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -21,7 +21,7 @@ function Dashboard() {
       );
 
       const workoutRes = await axios.get(
-        "http://localhost:5000/api/workouts",
+        "https://muscle-factory-pccc.onrender.com/api/workouts",
         {
           headers: {
             Authorization: `Bearer ${token}`,

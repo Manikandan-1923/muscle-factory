@@ -19,7 +19,7 @@ const fetchWorkouts = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      "http://localhost:5000/api/workouts",
+      "https://muscle-factory-pccc.onrender.com/api/workouts",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -43,7 +43,7 @@ const fetchWorkouts = async () => {
     const token = localStorage.getItem("token");
 
     await axios.delete(
-      `http://localhost:5000/api/workouts/${id}`,
+      `https://muscle-factory-pccc.onrender.com/api/workouts/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -76,7 +76,7 @@ const handleUpdateWorkout = async () => {
     const token = localStorage.getItem("token");
 
     await axios.put(
-      `http://localhost:5000/api/workouts/${editingId}`,
+      `https://muscle-factory-pccc.onrender.com/api/workouts/${editingId}`,
       {
         exerciseName,
         muscleGroup,
@@ -114,7 +114,7 @@ const handleUpdateWorkout = async () => {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/workouts",
+        "https://muscle-factory-pccc.onrender.com/api/workouts",
         {
           exerciseName,
           muscleGroup,
