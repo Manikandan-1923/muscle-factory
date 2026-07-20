@@ -15,7 +15,9 @@ function Navbar() {
 
 <NavLink to="/workouts">Workouts</NavLink>
 
-<NavLink to="/diet">Diet</NavLink>
+<NavLink to="/diet">Diet Guide</NavLink>
+
+<NavLink to="/my-diet">My Diet</NavLink>
 
 <NavLink to="/bmi">BMI</NavLink>
 

@@ -107,8 +107,14 @@ const handleSave = async () => {
     <div className="profile-container">
 
   <div className="profile-card">
+    <div className="profile-avatar">
+  {name?.charAt(0).toUpperCase()}
+</div>
 
-  <h1>👤 My Profile</h1>
+  <h1>My Profile</h1>
+<p className="profile-subtitle">
+Manage your fitness information
+</p>
 
   {
     isEditing ? (
@@ -193,7 +199,9 @@ const handleSave = async () => {
 }
 
   <p><strong>BMI:</strong> {bmi}</p>
-  <p><strong>Status:</strong> {bmiStatus}</p>
+  <p className="bmi-status">
+  <strong>Status:</strong> {bmiStatus}
+</p>
  <button
   onClick={() => {
     if (isEditing) {
@@ -205,11 +213,26 @@ const handleSave = async () => {
 >
   {isEditing ? "Save Changes" : "Edit Profile"}
 </button> 
-  <br /><br />
+
+<div className="profile-buttons">
+
+<button
+  onClick={() => {
+    if (isEditing) {
+      handleSave();
+    } else {
+      setIsEditing(true);
+    }
+  }}
+>
+  {isEditing ? "Save Changes" : "Edit Profile"}
+</button>
 
 <button onClick={handleLogout}>
-  Logout 
+  Logout
 </button>
+
+</div>
 
 </div>
 

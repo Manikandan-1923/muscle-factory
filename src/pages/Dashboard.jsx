@@ -57,11 +57,11 @@ const bmi =
     : 0;
     return (
     <div className="dashboard">
-      <h2 style={{ textAlign: "center", color: "white" }}>
-  👋 Welcome {profile.name}
-</h2>
-      <h1>📊 Dashboard</h1>
+     <div className="dashboard-header">
+    <h1>Welcome, {profile.name}</h1>
 
+    <p>Keep pushing yourself. Every workout counts! 💪</p>
+</div>
       <div className="stats">
 
         <div className="card">
@@ -87,19 +87,25 @@ const bmi =
   Recent Workouts
 </h2>
 
-{workouts.slice(0, 3).map((workout) => (
-  <div className="workout-card" key={workout._id}>
-    <h3>{workout.exerciseName}</h3>
+{workouts.length === 0 ? (
+  <p className="empty-message">
+    No workouts added yet.
+  </p>
+) : (
+  workouts.slice(0, 3).map((workout) => (
+    <div className="workout-card" key={workout._id}>
+      <h3>{workout.exerciseName}</h3>
 
-    <p>💪 {workout.muscleGroup}</p>
+      <p>💪 {workout.muscleGroup}</p>
 
-    <p>
-      {workout.sets} Sets × {workout.reps} Reps
-    </p>
+      <p>
+        {workout.sets} Sets × {workout.reps} Reps
+      </p>
 
-    <p>⏱️ {workout.duration} mins</p>
-  </div>
-))}
+      <p>⏱️ {workout.duration} mins</p>
+    </div>
+  ))
+)}
     </div>
   );
 }

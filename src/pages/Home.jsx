@@ -1,5 +1,5 @@
 import "./Home.css";
-
+import hero from "../assets/hero.png";
 function Home() {
   return (
     <div className="home">
@@ -7,15 +7,18 @@ function Home() {
       <section className="hero">
 
         <h1>💪 Muscle Factory</h1>
-
-        <p>
+     <p>
           Train Smarter. Track Better. Become Stronger.
-        </p>
-
-        <div className="hero-buttons">
+        </p>    
+  <div className="hero-buttons">
           <button>🏋️ Start Workout</button>
           <button>🥗 View Diet</button>
         </div>
+<img
+  src={hero}
+  alt="Hero"
+  className="hero-image"
+/>
 
       </section>
 
