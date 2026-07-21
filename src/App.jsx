@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Workouts from "./pages/Workouts";
@@ -12,19 +12,26 @@ import MyDiet from "./pages/MyDiet";
 
 function App() {
   return (
-    <BrowserRouter>
-    <Navbar />
-       <Routes>
+    <>
+      <Navbar />
+      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/workouts" element={<Workouts />} />
         <Route path="/diet" element={<Diet />} />
         <Route path="/bmi" element={<BMI />} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/my-diet" element={<MyDiet />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
